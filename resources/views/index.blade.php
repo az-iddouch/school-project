@@ -4,9 +4,10 @@
 
 @section('content')
 
+<!-- this is a test for github -->
+
 <div class="promotionsBar green responsive">
-    <img src="./images/dummy/promo-banner.png" alt=""> <a href="#"
-                                                            class="gtco-nav-toggle gtco-nav-white active closePromotions"><i></i></a>
+    <img src="./images/dummy/promo-banner.png" alt=""> <a href="#" class="gtco-nav-toggle gtco-nav-white active closePromotions"><i></i></a>
 </div>
 <div class="header-top hide-for-small-down">
     <div class="container">
