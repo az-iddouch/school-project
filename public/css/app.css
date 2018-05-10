@@ -21251,3 +21251,12 @@ sticky:before,
   background: linear-gradient(to bottom, #00ff90 0%, #59ffdd 47%, #ffff00 100%);
 }
 
+body {
+  background-color: #fff;
+}
+
+.xv-menuwrapper .dl-menu > li.parent > a:after {
+  content: "";
+  display: none;
+}
+

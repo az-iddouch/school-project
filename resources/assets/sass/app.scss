@@ -15,6 +15,7 @@
 //Core Or Common SCSS both for front end and panel
 @import "common";
 
+
 @import "animated-headline";
 /*
  * Basic or Must have Elements
@@ -60,3 +61,5 @@
 ////should be at end to override styles
 //@import "basic/helper";
 @import "kit/colors";
+
+@import "final";

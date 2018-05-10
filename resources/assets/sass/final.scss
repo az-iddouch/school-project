@@ -1,0 +1,8 @@
+body {
+  background-color: #fff;
+}
+
+.xv-menuwrapper .dl-menu > li.parent > a:after {
+  content: "";
+  display: none;
+}

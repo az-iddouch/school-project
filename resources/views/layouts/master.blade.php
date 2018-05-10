@@ -7,13 +7,31 @@
         <link rel="stylesheet" href="./css/app.css">
         <title>Laravel</title>
         <!-- Fonts -->
+        <link rel="stylesheet" href="./css/fontawesome-all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         
     </head>
     <body>
 
-    @yield('content')
+    @include('layouts.nav')
+
+    <main>
+
+        <div class="content-wrapper">
+
+            <div class="container">
+
+                @yield('content')
+
+            </div>
+
+        </div>
+        
+    </main>
+
+    @include('layouts.footer')
+
        
     </body>
 </html>
