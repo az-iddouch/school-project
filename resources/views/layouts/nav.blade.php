@@ -1,6 +1,7 @@
-<div class="promotionsBar green responsive">
-    <img src="./images/dummy/promo-banner.png" alt=""> <a href="#" class="gtco-nav-toggle gtco-nav-white active closePromotions"><i></i></a>
-</div>
+
+
+@yield('pre-nav')
+
 <div class="header-top hide-for-small-down">
     <div class="container">
         <div class="row">
@@ -37,7 +38,7 @@
                <i></i>
            </a>
            <a class="navbar-brand" href="index.html">
-               <img class="d-inline-block align-top" alt="" src="./images/basic/logo.png">
+               <img class="d-inline-block align-top" alt="" src="/images/basic/logo.png">
            </a>
            <div class="paper_menu">
                <div id="dl-menu" class="xv-menuwrapper responsive-menu">
@@ -83,7 +84,7 @@
                             </p>
                         </div>
                         <figure>
-                            <img src="../images/demo/ipad.png" alt="">
+                            <img src="/images/demo/ipad.png" alt="">
                         </figure>
                     </div>
                 </li>

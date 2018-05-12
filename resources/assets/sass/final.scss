@@ -6,3 +6,12 @@ body {
   content: "";
   display: none;
 }
+
+ul.iconList li:before {
+  content: "";
+  display: none;
+}
+
+.btn-primary {
+  color: #f5f8fa !important;
+}

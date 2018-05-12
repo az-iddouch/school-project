@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
-                <img src="./images/basic/logo.png" alt="Knowledge">
+                <img src="/images/basic/logo.png" alt="Knowledge">
                 <span class="circle"></span>
             </a>
             </div>
@@ -62,3 +62,5 @@
         </div>
     </div>
 </footer>
+
+<script src="/js/app.js"></script>
