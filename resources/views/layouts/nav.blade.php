@@ -43,16 +43,19 @@
            <div class="paper_menu">
                <div id="dl-menu" class="xv-menuwrapper responsive-menu">
     <ul class="dl-menu align-items-center">
-        <li class="parent megamenu"><a href="#">Produit 1 </a>
+
+
+
+        <li class="parent megamenu"><a href="/services/1">Produit 1 </a>
            
         </li>
-        <li class="parent"><a href="#">Produit 2</a>
+        <li class="parent"><a href="/services/2">Produit 2</a>
           
         </li>
-        <li class="parent megamenu"><a href="#">Produit 3 <span class="badge badge-danger">New</span></a>
+        <li class="parent megamenu"><a href="/services/3">Produit 3 <span class="badge badge-danger">New</span></a>
           
         </li>
-        <li class="parent"><a href="#">Produit 4</a>
+        <li class="parent"><a href="/services/4">Produit 4</a>
 
         </li>
         <li class="parent megamenu"><a href="#"><i class="fas fa-angle-down"></i>Autres</a>

@@ -37,6 +37,20 @@
                                 <li><i class="fas fa-exclamation"></i> Note general apropos de service</li>
                               
                             </ul>
+
+                            <!-- still need work here -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Plastification</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+
                             <div class="cart-options"> <span href="#" class="price"><span>{{ $service->default_price }} DHs</span></span>
                                 <div class="cart-buttons">
                                     <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
