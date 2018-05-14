@@ -39,17 +39,20 @@
                             </ul>
 
                             <!-- still need work here -->
+                            @foreach($service->options as $option)
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Plastification</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">{{ $option->name }}</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>Choisir..</option>
+                                @foreach($option->suboptions as $suboption)
+                                    <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
+                                @endforeach
                                 </select>
                             </div>
+
+                            @endforeach
 
                             <div class="cart-options"> <span href="#" class="price"><span>{{ $service->default_price }} DHs</span></span>
                                 <div class="cart-buttons">

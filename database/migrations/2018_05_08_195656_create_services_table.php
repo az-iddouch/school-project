@@ -19,7 +19,6 @@ class CreateServicesTable extends Migration
             $table->text('discription');
             $table->text('image');
             $table->float('default_price');
-            $table->integer('default_quantity');
             $table->timestamps();
         });
     }

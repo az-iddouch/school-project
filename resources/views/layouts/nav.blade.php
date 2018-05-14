@@ -46,31 +46,27 @@
 
 
 
-        <li class="parent megamenu"><a href="/services/1">Produit 1 </a>
+        <li class="parent megamenu"><a href="/services/1">Carte visite </a>
            
         </li>
-        <li class="parent"><a href="/services/2">Produit 2</a>
+        <li class="parent"><a href="/services/2">Papier a en-tete</a>
           
         </li>
-        <li class="parent megamenu"><a href="/services/3">Produit 3 <span class="badge badge-danger">New</span></a>
+        <li class="parent megamenu"><a href="/services/3">Flayer <span class="badge badge-danger">New</span></a>
           
         </li>
-        <li class="parent"><a href="/services/4">Produit 4</a>
+        <li class="parent"><a href="/services/4">Porte Documents</a>
 
         </li>
         <li class="parent megamenu"><a href="#"><i class="fas fa-angle-down"></i>Autres</a>
             <ul class="lg-submenu">
                 <li><a><i class="icon icon-shopping-bag2 s-24"></i>Autre produits</a>
                     <ul class="lg-submenu">
-                        <li><a href="home-shop.html">Produit 5 <span class="badge badge-warning">unique</span></a>
+                        <li><a href="/services/5">Invitations <span class="badge badge-warning">unique</span></a>
                         </li>
-                        <li><a href="shop.html">Produit 6</a>
+                        <li><a href="/services/6">Roll up</a>
                         </li>
-                        <li><a href="shop-single.html">Produit 7<span class="badge badge-danger">hot</span></a>
-                        </li>
-                        <li><a href="shop-left-sidebar.html">Prduit 8</a>
-                        </li>
-                        <li><a href="register.html">Produit 9</a>
+                        <li><a href="shop-single.html">Bandrole<span class="badge badge-danger">hot</span></a>
                         </li>
                         <li><a href="cart.html">Cart <span class="badge">11 items</span></a>
                         </li>
