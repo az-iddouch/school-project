@@ -87,14 +87,13 @@
 					</p>
 				</div>
 				<div class="light p-40 b-t-b">
-					<form action="dashboard2.html">
+					<form action="/login" method="POST">
+						@csrf
 						<div class="form-group has-icon"><i class="icon-envelope-o"></i>
-							<input type="text" class="form-control form-control-lg"
-								placeholder="Email Address">
+							<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 						</div>
 						<div class="form-group has-icon"><i class="icon-user-secret"></i>
-							<input type="text" class="form-control form-control-lg"
-								placeholder="Password">
+							<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 						</div>
 						<input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
 						<small class="forget-pass">Have you forgot your username or password ?</small>
@@ -138,22 +137,19 @@
 						<div class="light p-t-b-40">
 							<div class="p-40">
 								<h5 class="p-b-20">Create New User Account</h5>
-								<form action="dashboard2.html ">
+								<form action="/register" method="POST">
+								@csrf
 									<div class="form-group has-icon"><i class="icon-user-circle"></i>
-										<input type="text" class="form-control form-control-lg"
-											placeholder="Your Name">
+										<input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="name" required autofocus>
 									</div>
 									<div class="form-group has-icon"><i class="icon-envelope-o"></i>
-										<input type="text" class="form-control form-control-lg"
-											placeholder="Email Address">
+										<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="email" required>
 									</div>
 									<div class="form-group has-icon"><i class="icon-user-secret"></i>
-										<input type="text" class="form-control form-control-lg"
-											placeholder="Password">
+										<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 									</div>
 									<div class="form-group has-icon"><i class="icon-repeat"></i>
-										<input type="text" class="form-control form-control-lg"
-											placeholder="Confirm Password">
+										<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 									</div>
 									<input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up Now">
 									<p class="forget-pass">A verification email wil be sent to you</p>

@@ -7,14 +7,13 @@
         <div class="row">
             <div class="col-xs-12 col-md-7">
                 <ul class="top-nav">
-                    <li><a href="#">Buyer Protection</a></li>
-                    <li class="parent"><a href="#">Help</a>
-                        <ul>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Open a Ticket</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Download Mobile App</a></li>
+                @if(Auth::check())
+                    <li><a href="#" ><strong>bienvenue  {{ Auth::user()->name }} ! </strong></a></li>
+                    <li><a href="/logout" onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                    <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endif
                 </ul>
             </div>
             <div class="col-xs-12 col-md-5">

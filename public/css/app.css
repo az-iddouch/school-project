@@ -24616,3 +24616,7 @@ ul.iconList li:before {
   color: #f5f8fa !important;
 }
 
+.modal {
+  z-index: 9999;
+}
+
