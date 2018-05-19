@@ -71,6 +71,7 @@
 	</div>
 </div>
 <!-- end row -->
+@if(Auth::guest())
 <!-- Login modal -->
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog width-400" role="document">
@@ -162,5 +163,6 @@
 		</div>
 	</div>
 </div>
+@endif
 </div>
 @endsection

@@ -7,13 +7,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-7">
                 <ul class="top-nav">
-                @if(Auth::check())
-                    <li><a href="#" ><strong>bienvenue  {{ Auth::user()->name }} ! </strong></a></li>
-                    <li><a href="/logout" onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                    <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                @endif
+               
                 </ul>
             </div>
             <div class="col-xs-12 col-md-5">
@@ -88,14 +82,36 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin">
-            Login
-        </a>
-        </li>
-        <li><a href="#modalSignUp" class="btn btn-primary nav-btn" data-toggle="modal"
-               data-target="#modalSignUp">Sign
-            Up</a>
-        </li>
+        @if(Auth::guest())
+            <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin">
+                Login
+            </a>
+            </li>
+            <li><a href="#modalSignUp" class="btn btn-primary nav-btn" data-toggle="modal"
+                data-target="#modalSignUp">Sign
+                Up</a>
+            </li>
+        @elseif(Auth::check())
+          <li class="parent">
+            <a href="/services/2">Pannier</a>
+          </li>
+            <li>
+                <div class="dropdown">
+                    <a type="button" class="btn btn-primary nav-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">do something</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout" onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    </div>
+                </div>
+                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+
+        @endif
     </ul>
 </div>
 <!-- Login modal -->
