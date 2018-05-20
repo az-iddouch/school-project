@@ -93,11 +93,11 @@
             </li>
         @elseif(Auth::check())
           <li class="parent">
-            <a href="/services/2">Pannier</a>
+            <a href="/cart"><i class="fas fa-shopping-cart"></i><b>Pannier<span class="badge badge-pill badge-primary">3</span></b></a>
           </li>
             <li>
                 <div class="dropdown">
-                    <a type="button" class="btn btn-primary nav-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                <a href="#" id="user-btn" class="font-weight-bold dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{{ Auth::user()->name }} </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>

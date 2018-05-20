@@ -15,6 +15,9 @@
 Route::get('/', 'ServicesController@index');
 Route::get('/services/{service}', 'ServicesController@show');
 
+Route::get('/cart', 'CartController@index');
+Route::post('/cart', 'CartController@create');
+
 
 // Auth::routes();
 

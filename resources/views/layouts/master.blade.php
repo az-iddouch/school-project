@@ -20,19 +20,20 @@
 
     <main>
 
-        <div class="content-wrapper">
+        <!-- <div class="content-wrapper">
 
-            <div class="container">
+            <div class="container"> -->
 
                 @yield('content')
 
-            </div>
+            <!-- </div>
 
-        </div>
+        </div> -->
         
     </main>
 
     @include('layouts.footer')
+    @include('layouts.modals')
 
        
     </body>

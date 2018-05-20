@@ -3,6 +3,10 @@
 @section('content')
 
 
+    <div class="content-wrapper">
+
+        <div class="container">
+
  <div class="single-product-detail">
                 <div class="row">
                     <div class="col-12 col-lg-5">
@@ -11,6 +15,8 @@
 
 
                           <!-- vue js slider component -->
+
+                          <img src="{{ asset('images/services/s5.png') }}" alt="" >
 
 
 
@@ -38,39 +44,55 @@
                               
                             </ul>
 
-                            <!-- still need work here -->
-                            @foreach($service->options as $option)
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">{{ $option->name }}</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choisir..</option>
-                                @foreach($option->suboptions as $suboption)
-                                    <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-
-                            @endforeach
-
-                            <div class="cart-options"> <span href="#" class="price"><span>{{ $service->default_price }} DHs</span></span>
-                                <div class="cart-buttons">
-                                    <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
-                                        <span class="xv-qyt xv-down"
-                                              data-value="-1">-</span>
-                                        <input step="20" min="50" max="10000" name="quantity"
-                                               value="{{$service->default_quantity}}" title="Qty" class="input-text qty text" size="4" type="number">
+                            <form action="/cart" method="POST">
+                            @csrf
+                                <!-- still need work here -->
+                                @foreach($service->options as $option)
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="{{ $option->name }}">{{ $option->name }}</label>
                                     </div>
-                                    <span>
-
-                                         <a class="btn btn-lg btn-primary">ADD TO CART</a>
-
-                                     </span>
+                                    <select class="custom-select" id="{{ $option->name }}" name="{{ $option->name }}">
+                                        <option selected>Choisir..</option>
+                                    @foreach($option->suboptions as $suboption)
+                                        <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
-                                <!--cart-buttons-->
-                            </div>
+
+                                @endforeach
+                                
+                                <!-- <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload votre design</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file (PDF)</label>
+                                    </div>
+                                </div> -->
+
+                                <div class="cart-options"> <span href="#" class="price"><span>{{ $service->default_price }} DHs</span></span>
+                                    <div class="cart-buttons">
+                                        <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
+                                            <span class="xv-qyt xv-down"
+                                                data-value="-1">-</span>
+                                            <input step="20" min="50" max="10000" name="quantity"
+                                                value="" title="Qty" class="input-text qty text" size="4" type="number">
+                                        </div>
+                                        <span>
+
+                                            <button type="submit" class="btn btn-lg btn-primary">ADD TO CART</button>
+
+                                        </span>
+                                    </div>
+                                    <!--cart-buttons-->
+                                </div>
+                                <input type="hidden" name="id" value="{{ $service->id }}">
+                                <input type="hidden" name="name" value="{{ $service->name }}">
+                                <input type="hidden" name="price" value="{{ $service->default_price}}">
                             <!--cart-options-->
+                            </form>
                         </div>
                         <!--single-product-overview-->
                     </div>
@@ -124,6 +146,8 @@
                 </div>
                 <div class="row clearfix">
 
+                </div>
+            </div>
                 </div>
             </div>
 
