@@ -16,7 +16,12 @@ Route::get('/', 'ServicesController@index');
 Route::get('/services/{service}', 'ServicesController@show');
 
 Route::get('/cart', 'CartController@index');
-Route::post('/cart', 'CartController@create');
+Route::post('/cart', 'CartController@create')->name('cart_post');
+Route::get('/cart/empty', function (){
+    Cart::destroy();
+});
+
+Route::delete('/cart/{service}', 'CartController@destroy');
 
 
 // Auth::routes();

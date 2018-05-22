@@ -21,6 +21,22 @@
     </div>
     <div class="content-wrapper">
         <div class="container">
+
+        @if(session()->has('success_message'))
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success_message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        @endif
+
+        @if(Cart::count() > 0)
+
+            <h4>{{ Cart::count()}} Élément(s) dans votre pannier </h4>
+
             <table class="table table-striped paper-block">
                 <colgroup>
                     <col class="col-1">
@@ -33,95 +49,55 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th>Product Name</th>
-                    <th>Price</th>
+                    <th>Nom de produit</th>
+                    <th>Prix</th>
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                @foreach(Cart::content() as $item)
+
                 <tr>
                     <td>
                         <figure>
                             <img src="{{ asset('images/services/s5.png') }}" alt="">
                         </figure>
                     </td>
-                    <td>Summer collection</td>
-                    <td>$40</td>
+                    <td><a href="/services/{{$item->id}}">{{$item->name}}</a></td>
+                    <td>{{ $item->price }} Dhs</td>
                     <td>
                         <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
                             <span class="xv-qyt xv-down"
                                   data-value="-1">-</span>
-                            <input step="1" min="1" max="" name="quantity"
-                                   value="1" title="Qty" class="input-text qty text" size="4" type="number">
+                            <input step="1" min="1" max="9999999" name="quantity"
+                                   value="{{ $item->options->has('quantity') ? $item->options->quantity : '' }}"  class="input-text qty text" size="4" type="number">
                         </div>
                     </td>
-                    <td>$40</td>
-                    <td><a href="#"><i class="fas fa-recycle"></i></a>
-                    </td>
+                    <td>total</td>
+
+                    <!-- needs fixing -->
+                    <form action="/cart/{{$item->$rowId}}" method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                        <td>
+                            <button type="submit"><i class="fas fa-recycle"></i></button>
+                        </td>
+                    </form>
                 </tr>
-                <tr>
-                    <td>
-                        <figure>
-                            <img src="{{ asset('images/services/s5.png') }}" alt="">
-                        </figure>
-                    </td>
-                    <td>Summer collection</td>
-                    <td>$40</td>
-                    <td>
-                        <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
-                            <span class="xv-qyt xv-down"
-                                  data-value="-1">-</span>
-                            <input step="1" min="1" max="" name="quantity"
-                                   value="1" title="Qty" class="input-text qty text" size="4" type="number">
-                        </div>
-                    </td>
-                    <td>$40</td>
-                    <td><a href="#"><i class="fas fa-recycle"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure>
-                            <img src="{{ asset('images/services/s5.png') }}" alt="">
-                        </figure>
-                    </td>
-                    <td>Summer collection</td>
-                    <td>$40</td>
-                    <td>
-                        <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
-                            <span class="xv-qyt xv-down"
-                                  data-value="-1">-</span>
-                            <input step="1" min="1" max="" name="quantity"
-                                   value="1" title="Qty" class="input-text qty text" size="4" type="number">
-                        </div>
-                    </td>
-                    <td>$40</td>
-                    <td><a href="#"><i class="fas fa-recycle"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure>
-                            <img src="{{ asset('images/services/s5.png') }}" alt="">
-                        </figure>
-                    </td>
-                    <td>Summer collection</td>
-                    <td>$40</td>
-                    <td>
-                        <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
-                            <span class="xv-qyt xv-down"
-                                  data-value="-1">-</span>
-                            <input step="1" min="1" max="" name="quantity"
-                                   value="1" title="Qty" class="input-text qty text" size="4" type="number">
-                        </div>
-                    </td>
-                    <td>$40</td>
-                    <td><a href="#"><i class="fas fa-recycle"></i></a>
-                    </td>
-                </tr>
+              
+                @endforeach
+
                 </tbody>
             </table>
+
+            @else
+
+            <h4>Pas d' éléments dans votre pannier !</h4>
+
+            @endif
+
             <div class="row p-b-40">
                 <div class="col-12 col-md-4 alignright">
                     <div class="paper-block">

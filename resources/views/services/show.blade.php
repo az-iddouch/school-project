@@ -41,7 +41,7 @@
                             <p class="no-mar">{{ $service->discription }}</p>
                             <ul class="product-description mt-35 mb-35 iconList">
                                 <li><i class="fas fa-exclamation"></i> Note general apropos de service</li>
-                              
+                            
                             </ul>
 
                             <form action="/cart" method="POST">
@@ -53,7 +53,7 @@
                                         <label class="input-group-text" for="{{ $option->name }}">{{ $option->name }}</label>
                                     </div>
                                     <select class="custom-select" id="{{ $option->name }}" name="{{ $option->name }}">
-                                        <option selected>Choisir..</option>
+                                        <option selected>{{ $option->name }}</option>
                                     @foreach($option->suboptions as $suboption)
                                         <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
                                     @endforeach

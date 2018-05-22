@@ -24620,3 +24620,12 @@ ul.iconList li:before {
   z-index: 9999;
 }
 
+#user-btn:hover,
+#user-btn:focus {
+  background-color: #03a9f4;
+}
+
+.input-group-text {
+  margin: 0;
+}
+
