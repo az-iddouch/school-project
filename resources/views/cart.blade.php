@@ -44,12 +44,15 @@
                     <col class="col-1">
                     <col class="col-2">
                     <col class="col-1">
+                    <col class="col-2">
+                    <col class="col-1">
                     <col class="col-1">
                 </colgroup>
                 <thead>
                 <tr>
                     <th></th>
                     <th>Nom de produit</th>
+                    <th>Options</th>
                     <th>Prix</th>
                     <th>Quantity</th>
                     <th>Total</th>
@@ -66,6 +69,41 @@
                         </figure>
                     </td>
                     <td><a href="/services/{{$item->id}}">{{$item->name}}</a></td>
+                    <td>
+
+
+                    <!-- needs work -->
+                        @if($item->options->has('options'))
+                                @foreach($item->options['serviceOptions'] as $serviceOption)
+
+
+                                <ul>
+                                    <li>
+                                        {{ $serviceOption->name}}
+                                    </li>
+                                </ul>  
+                                
+                                @endforeach
+                            @endif
+
+
+                    </td>
+                    <td>
+                        <!--needs work  -->
+                        @if($item->options->has('optionsArray'))
+                            @foreach($item->options['optionsArray'] as $optionItem)
+
+
+                            <ul>
+                                <li>
+                                    {{ $optionItem }}
+                                </li>
+                            </ul>  
+                              
+                            @endforeach
+                        @endif
+
+                    </td>
                     <td>{{ $item->price }} Dhs</td>
                     <td>
                         <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
@@ -78,7 +116,7 @@
                     <td>total</td>
 
                     <!-- needs fixing -->
-                    <form action="/cart/{{$item->$rowId}}" method="POST">
+                    <form action="/cart/{{$item->rowId}}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
                         <td>
@@ -92,11 +130,7 @@
                 </tbody>
             </table>
 
-            @else
 
-            <h4>Pas d' éléments dans votre pannier !</h4>
-
-            @endif
 
             <div class="row p-b-40">
                 <div class="col-12 col-md-4 alignright">
@@ -125,6 +159,7 @@
                                type="submit">
                     </div>
                 </div>
+
                 <div class="col-12 col-md-4 alignright">
                     <div class="paper-block">
                         <h4>Estimate Shipping</h4>
@@ -144,7 +179,26 @@
                         </div>
                         <input class="btn btn-info" value="Apply Code" type="submit">
                     </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-outline-secondary ">Continuer vos achats</button>
+                    </div>
                 </div>
+
+
+            @else
+
+            <h4>Pas d' éléments dans votre pannier !</h4>
+
+            
+            <div class="mt-4">
+                    <a href="/" type="button" class="btn btn-outline-secondary ">Continuer vos achats</a>
+            </div>
+            @endif
+
+                
+
+
+                
             </div>
         </div>
     </div>

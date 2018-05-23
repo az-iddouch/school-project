@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Service;
 
 
 class CartController extends Controller
@@ -24,12 +25,25 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, Service $service)
     {
-        // dd(Cart::content());
-        Cart::add($request->id, $request->name, 1, $request->price, ['quantity' => $request->quantity]);
+        $service = Service::find($request->id);
+
+        // dd($service->options);
+        $optionsArray = [];
+        // $request->session()->flash('request', $request);
+        foreach($service->options as $option){
+            $name = $option->name;
+            array_push($optionsArray, $request->$name);
+        }
+
+        // dd($optionsArray);
+
+        Cart::add(Service::class, $request->name, 1, $request->price, ['quantity' => $request->quantity, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options]);
+
 
         return redirect()->route('cart_post')->with('success_message' , 'Element ajouté sur votre pannier');
+             
     }
 
     /**
@@ -85,6 +99,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+    
         Cart::remove($id);
     
         return back()->with('success_message' , 'Element supprime avec success');

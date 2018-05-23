@@ -55,7 +55,7 @@
                                     <select class="custom-select" id="{{ $option->name }}" name="{{ $option->name }}">
                                         <option selected>{{ $option->name }}</option>
                                     @foreach($option->suboptions as $suboption)
-                                        <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
+                                        <option value="{{ $suboption->price }}">{{ $suboption->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>

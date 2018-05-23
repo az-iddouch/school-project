@@ -12,7 +12,7 @@
             </div>
             <div class="col-xs-12 col-md-5">
                 <ul class="top-nav text-right">
-                    <li><a href="#"><i class="icon icon-exchange"></i>Compare list</a></li>
+                    <li><a href="/cart"><i class="icon icon-exchange"></i><b>Pannier</b> <span class="badge badge-pill badge-primary">{{ Cart::instance('default')->count() }}</span></a></li>
                     <li><a href="#"><i class="icon icon-heart"></i> Wishlist</a></li>
                     <li><a href="#"><i class="icon icon-user"></i>Login</a></li>
                     <li><a href="#"><i class="icon icon-lock"></i>Register</a></li>
