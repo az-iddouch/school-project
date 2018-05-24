@@ -16,6 +16,7 @@ class CreateOptionServiceTable extends Migration
         Schema::create('option_service', function (Blueprint $table) {
             $table->integer('option_id');
             $table->integer('service_id');
+            $table->primary(['option_id', 'service_id']);
         });
     }
 

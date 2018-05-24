@@ -83,17 +83,20 @@ class DatabaseSeeder extends Seeder
 
         //options table
         DB::table('options')->insert([
+            'label' => 'recto / recto-verso',
             'name' => 'recto-verso',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('options')->insert([
+            'label' => 'plastification',
             'name' => 'plastification',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('options')->insert([
-            'name' => 'type de papier',
+            'label' => 'type de papier',
+            'name' => 'type_de_papier',
             'created_at' => now(),
             'updated_at' => now()
         ]);

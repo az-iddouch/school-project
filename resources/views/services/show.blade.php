@@ -46,16 +46,15 @@
 
                             <form action="/cart" method="POST">
                             @csrf
-                                <!-- still need work here -->
                                 @foreach($service->options as $option)
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="{{ $option->name }}">{{ $option->name }}</label>
+                                        <label class="input-group-text" for="{{ $option->name }}">{{ $option->label }}</label>
                                     </div>
                                     <select class="custom-select" id="{{ $option->name }}" name="{{ $option->name }}">
-                                        <option selected>{{ $option->name }}</option>
+                                        <!-- <option selected>{{ $option->name }}</option> -->
                                     @foreach($option->suboptions as $suboption)
-                                        <option value="{{ $suboption->price }}">{{ $suboption->name }}</option>
+                                        <option value="{{ $suboption->name }}">{{ $suboption->name }}</option>
                                     @endforeach
                                     </select>
                                 </div>

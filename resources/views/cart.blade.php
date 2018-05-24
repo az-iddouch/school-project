@@ -53,6 +53,7 @@
                     <th></th>
                     <th>Nom de produit</th>
                     <th>Options</th>
+                    <th>options-prix</th>
                     <th>Prix</th>
                     <th>Quantity</th>
                     <th>Total</th>
@@ -73,13 +74,13 @@
 
 
                     <!-- needs work -->
-                        @if($item->options->has('options'))
+                        @if($item->options->has('serviceOptions'))
                                 @foreach($item->options['serviceOptions'] as $serviceOption)
 
 
                                 <ul>
                                     <li>
-                                        {{ $serviceOption->name}}
+                                        {{ $serviceOption->label}}
                                     </li>
                                 </ul>  
                                 
@@ -90,18 +91,22 @@
                     </td>
                     <td>
                         <!--needs work  -->
-                        @if($item->options->has('optionsArray'))
-                            @foreach($item->options['optionsArray'] as $optionItem)
+
+                         @if($item->options->has('optionsArray'))
+                                @foreach($item->options['optionsArray'] as $selectedOption)
 
 
-                            <ul>
-                                <li>
-                                    {{ $optionItem }}
-                                </li>
-                            </ul>  
-                              
-                            @endforeach
-                        @endif
+                                <ul>
+                                    <li>
+                                        {{ $selectedOption}}
+                                    </li>
+                                </ul>  
+                                
+                                @endforeach
+                            @endif
+
+                       
+                       
 
                     </td>
                     <td>{{ $item->price }} Dhs</td>

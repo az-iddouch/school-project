@@ -25,19 +25,26 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Service $service)
+    public function create(Request $request)
     {
         $service = Service::find($request->id);
 
         // dd($service->options);
         $optionsArray = [];
         // $request->session()->flash('request', $request);
-        foreach($service->options as $option){
-            $name = $option->name;
-            array_push($optionsArray, $request->$name);
+        
+        if($service->options){
+            foreach($service->options as $option){
+
+                $name = $option->name;
+                
+                array_push($optionsArray, request($name));
+            }
+            // dd($request);
         }
 
         // dd($optionsArray);
+        // dd($service->options);
 
         Cart::add(Service::class, $request->name, 1, $request->price, ['quantity' => $request->quantity, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options]);
 
