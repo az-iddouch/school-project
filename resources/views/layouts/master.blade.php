@@ -18,7 +18,9 @@
 
     @include('layouts.nav')
 
+<div id="app">
     <main>
+    
 
         <!-- <div class="content-wrapper">
 
@@ -31,6 +33,7 @@
         </div> -->
         
     </main>
+</div>
 
     @include('layouts.footer')
     @include('layouts.modals')

@@ -37,17 +37,19 @@
 
             <h4>{{ Cart::count()}} Élément(s) dans votre pannier </h4>
 
+
             <table class="table table-striped paper-block">
-                <colgroup>
+                <!-- <colgroup>
                     <col class="col-1">
                     <col class="col-5">
-                    <col class="col-1">
+                    <col class="col-3">
                     <col class="col-2">
                     <col class="col-1">
                     <col class="col-2">
                     <col class="col-1">
                     <col class="col-1">
-                </colgroup>
+                    <col class="col-1">
+                </colgroup> -->
                 <thead>
                 <tr>
                     <th></th>
@@ -57,6 +59,8 @@
                     <th>Prix</th>
                     <th>Quantity</th>
                     <th>Total</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -84,8 +88,8 @@
                                     </li>
                                 </ul>  
                                 
-                                @endforeach
-                            @endif
+                            @endforeach
+                        @endif
 
 
                     </td>
@@ -98,7 +102,7 @@
 
                                 <ul>
                                     <li>
-                                        {{ $selectedOption}}
+                                        + {{ $selectedOption}}
                                     </li>
                                 </ul>  
                                 
@@ -118,17 +122,33 @@
                                    value="{{ $item->options->has('quantity') ? $item->options->quantity : '' }}"  class="input-text qty text" size="4" type="number">
                         </div>
                     </td>
-                    <td>total</td>
+                    <td></td>
+                    <td>
 
                     <!-- needs fixing -->
-                    <form action="/cart/{{$item->rowId}}" method="POST">
-                    @csrf
-                    {{ method_field('DELETE') }}
-                        <td>
-                            <button type="submit"><i class="fas fa-recycle"></i></button>
-                        </td>
-                    </form>
+                    <td>
+                        <form action="/cart/{{$item->rowId}}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                                <button type="submit"><i class="fas fa-heart"></i></button>
+                        </form>
+                    </td>
+                        
+                    <td>
+                        <form action="/cart/{{$item->rowId}}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                                <button type="submit"><i class="fas fa-recycle"></i></button>
+                        </form>
+                    </td>
+
+
+                    
+                    </td>
+                    <!-- <td>
+                    </td> -->
                 </tr>
+                
               
                 @endforeach
 
