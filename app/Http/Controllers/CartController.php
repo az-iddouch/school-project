@@ -16,6 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
+        // dd(Cart::content());
         return view('cart');
     }
 
@@ -27,6 +28,14 @@ class CartController extends Controller
      */
     public function create(Request $request)
     {
+        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
+            return $cartItem->id === $request->id;
+        });
+
+        if ($duplicates->isNotEmpty()){
+            return redirect()->route('cart_post')->with('success_message', 'vous avez déja ce service dans votre pannier!');
+        }
+
         $service = Service::find($request->id);
 
         // dd($service->options);
@@ -46,11 +55,20 @@ class CartController extends Controller
         // dd($optionsArray);
         // dd($service->options);
 
-        Cart::add(Service::class, $request->name, 1, $request->price, ['quantity' => $request->quantity, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options]);
+        //calculation of addition fees , like for plastification  
+        $price = $request->price;
+        if(count($optionsArray) > 0){
+            foreach($optionsArray as $additionalFee){
+                $price+= $additionalFee;
+            }
+        }
+        
 
+        Cart::add($request->id, $request->name, $request->quantity, $price, ['quantity' => $request->quantity, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options])->associate('App\Service');
 
+        
         return redirect()->route('cart_post')->with('success_message' , 'Element ajouté sur votre pannier');
-             
+              
     }
 
     /**
@@ -83,7 +101,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-        //
+        //edit my product
     }
 
     /**
@@ -95,7 +113,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

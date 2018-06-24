@@ -35,11 +35,11 @@
 
         @if(Cart::count() > 0)
 
-            <h4>{{ Cart::count()}} Élément(s) dans votre pannier </h4>
+            <h4>{{ count(Cart::instance('default')->content())}} Élément(s) dans votre pannier </h4>
 
 
             <table class="table table-striped paper-block">
-                <!-- <colgroup>
+                <colgroup>
                     <col class="col-1">
                     <col class="col-5">
                     <col class="col-3">
@@ -49,7 +49,7 @@
                     <col class="col-1">
                     <col class="col-1">
                     <col class="col-1">
-                </colgroup> -->
+                </colgroup>
                 <thead>
                 <tr>
                     <th></th>
@@ -86,7 +86,7 @@
                                     <li>
                                         {{ $serviceOption->label}}
                                     </li>
-                                </ul>  
+                                </ul>
                                 
                             @endforeach
                         @endif
@@ -122,10 +122,12 @@
                                    value="{{ $item->options->has('quantity') ? $item->options->quantity : '' }}"  class="input-text qty text" size="4" type="number">
                         </div>
                     </td>
-                    <td></td>
                     <td>
-
-                    <!-- needs fixing -->
+                        {{ $item->price * $item->qty }} DHs
+                    </td>
+                    <td>
+                        <form action=""></form>
+                    </td>
                     <td>
                         <form action="/cart/{{$item->rowId}}" method="POST">
                         @csrf
@@ -164,18 +166,18 @@
                         <table class="table table-striped tabs-vertical">
                             <tbody>
                             <tr>
-                                <th>Products</th>
-                                <td><span class="price">$1,000.00</span>
+                                <th>Total HT</th>
+                                <td><span class="price">{{ Cart::subtotal() }} DHs</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Shiping Cost</th>
-                                <td><span class="price">$200.00</span>
+                                <th>TVA & autres taxes</th>
+                                <td><span class="price">{{ Cart::tax() }} DHs</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Grand Total</th>
-                                <td><span class="price">$1,200.00</span>
+                                <th>Total TTC</th>
+                                <td><span class="price">{{ Cart::total() }} DHs</span>
                                 </td>
                             </tr>
                             </tbody>
@@ -186,6 +188,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 alignright">
+                <!--
                     <div class="paper-block">
                         <h4>Estimate Shipping</h4>
                         <div class="custome-select style2"><span>London <b class="xv-angle-down"></b></span>
@@ -203,11 +206,11 @@
                             </select>
                         </div>
                         <input class="btn btn-info" value="Apply Code" type="submit">
-                    </div>
+                    </div> -->
                     <div class="mt-4">
                         <button type="button" class="btn btn-outline-secondary ">Continuer vos achats</button>
                     </div>
-                </div>
+                </div> 
 
 
             @else

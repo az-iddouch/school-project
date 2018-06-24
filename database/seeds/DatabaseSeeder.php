@@ -103,6 +103,13 @@ class DatabaseSeeder extends Seeder
 
         //sub-options
         DB::table('suboptions')->insert([
+            'name' => 'sans plastification',
+            'price' => 0,
+            'option_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('suboptions')->insert([
             'name' => 'pelliculage brillant',
             'price' => 0.5,
             'option_id' => 2,
