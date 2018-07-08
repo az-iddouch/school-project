@@ -28,6 +28,7 @@
                         <ul class="product-description mt-35 mb-35 iconList">
                             <li><i class="fas fa-exclamation"></i> Note general apropos de service</li>
                         </ul>
+
                         <form action="/cart" method="POST">
                             @csrf
                             @foreach($service->options as $option)
@@ -62,7 +63,7 @@
                                             value="" title="Qty" class="input-text qty text" size="4" type="number">
                                     </div>
                                     <span>
-                                    <button type="submit" class="btn btn-lg btn-primary">ADD TO CART</button>
+                                    <button type="submit" class="btn btn-lg btn-primary">AJOUTER AU PANIER</button>
                                     </span>
                                 </div>
                                 <!--cart-buttons-->

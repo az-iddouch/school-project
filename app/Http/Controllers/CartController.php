@@ -17,7 +17,7 @@ class CartController extends Controller
     public function index()
     {
         // dd(Cart::content());
-        return view('cart');
+        return view('cart'); 
     }
 
     /**
@@ -28,19 +28,15 @@ class CartController extends Controller
      */
     public function create(Request $request)
     {
+        //if item already exists in the cart
         $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->id;
         });
-
-        if ($duplicates->isNotEmpty()){
-            return redirect()->route('cart_post')->with('success_message', 'vous avez déja ce service dans votre pannier!');
-        }
+    
 
         $service = Service::find($request->id);
 
-        // dd($service->options);
         $optionsArray = [];
-        // $request->session()->flash('request', $request);
         
         if($service->options){
             foreach($service->options as $option){
@@ -48,23 +44,38 @@ class CartController extends Controller
                 $name = $option->name;
                 
                 array_push($optionsArray, request($name));
-            }
-            // dd($request);
-        }
-
-        // dd($optionsArray);
-        // dd($service->options);
-
-        //calculation of addition fees , like for plastification  
-        $price = $request->price;
-        if(count($optionsArray) > 0){
-            foreach($optionsArray as $additionalFee){
-                $price+= $additionalFee;
+                
             }
         }
-        
 
-        Cart::add($request->id, $request->name, $request->quantity, $price, ['quantity' => $request->quantity, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options])->associate('App\Service');
+          //calculation of addition fees , like for plastification  
+          $price = $request->price;
+          if(count($optionsArray) > 0){
+              foreach($optionsArray as $additionalFee){
+                  $price+= $additionalFee;
+              }
+          }
+
+   
+        if ($duplicates->isNotEmpty()){
+
+            $id    = $request->id;
+            $rows  = Cart::content();
+            $rowId = $rows->where('id', $id)->first()->rowId;
+
+            $item = Cart::get($rowId);
+
+            $options = $item->options->merge(['serviceOptions' => $service->options, 'optionsArray' => $optionsArray, 'serviceOptions' => $service->options]);
+
+            Cart::update($rowId,['qty' => $request->quantity, 'price' => $price, 'options' => $options]);
+            
+
+            return redirect()->route('cart_post')->with('success_message', 'vous avez modifier ce service dans votre panier !'); 
+        }        
+
+
+
+        Cart::add($request->id, $request->name, $request->quantity, $price, ['serviceOptions' => $service->options, 'optionsArray' => $optionsArray])->associate('App\Service');
 
         
         return redirect()->route('cart_post')->with('success_message' , 'Element ajouté sur votre pannier');
@@ -101,7 +112,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-        //edit my product
+        return view('service.show', compact($id));
     }
 
     /**
@@ -113,7 +124,9 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $cartItemId = Cart::search(function ($cartItem, $rowId) {
+            return $cartItem->id ;
+        });
     }
 
     /**
@@ -129,4 +142,36 @@ class CartController extends Controller
     
         return back()->with('success_message' , 'Element supprime avec success');
     }
+
+    /**
+     * add item to save for later cart (favs)
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function saveForLater($id)
+    {
+    
+        $item = Cart::get($id);
+        Cart::remove($id);
+
+        // $service = Service::find($item);
+
+       
+        //   //calculation of addition fees , like for plastification  
+        //   dd($item);
+        //   $price = $request->price;
+        //   if(count($optionsArray) > 0){
+        //       foreach($optionsArray as $additionalFee){
+        //           $price+= $additionalFee;
+        //       }
+        //   }
+
+
+        //add to favs table 
+
+        
+        return redirect()->route('cart_post')->with('success_message' , 'un article a été enregistré pour plus tard.');
+    }
 }
+    

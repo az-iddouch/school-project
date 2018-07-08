@@ -22,6 +22,8 @@
     <div class="content-wrapper">
         <div class="container">
 
+        
+
         @if(session()->has('success_message'))
 
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -115,23 +117,25 @@
                     </td>
                     <td>{{ $item->price }} Dhs</td>
                     <td>
-                        <div class="quantity"><span class="xv-qyt xv-qup" data-value="1">+</span>
-                            <span class="xv-qyt xv-down"
-                                  data-value="-1">-</span>
+                        <div class="quantity">
                             <input step="1" min="1" max="9999999" name="quantity"
-                                   value="{{ $item->options->has('quantity') ? $item->options->quantity : '' }}"  class="input-text qty text" size="4" type="number">
+                                   value="{{ $item->qty }}"  class="input-text qty text" size="4" type="number" disabled>
                         </div>
                     </td>
                     <td>
                         {{ $item->price * $item->qty }} DHs
                     </td>
+
+                    <td>
+                        <a href="/services/{{$item->id}}">edit</a>
+                    </td>
+
                     <td>
                         <form action=""></form>
                     </td>
                     <td>
-                        <form action="/cart/{{$item->rowId}}" method="POST">
+                        <form action="/cart/saveForLater/{{$item->rowId}}" method="POST">
                         @csrf
-                        {{ method_field('DELETE') }}
                                 <button type="submit"><i class="fas fa-heart"></i></button>
                         </form>
                     </td>

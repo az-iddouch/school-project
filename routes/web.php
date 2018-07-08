@@ -20,6 +20,7 @@ Route::post('/cart', 'CartController@create')->name('cart_post');
 Route::get('/cart/empty', function (){
     Cart::destroy();
 });
+Route::post('/cart/saveForLater/{service}', 'CartController@saveForLater');
 
 Route::delete('/cart/{service}', 'CartController@destroy');
 
