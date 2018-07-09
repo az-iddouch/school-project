@@ -19,6 +19,7 @@ class CartController extends Controller
         // dd(Cart::content());
         return view('cart'); 
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
-                <img src="/images/basic/logo.png" alt="Knowledge">
+                <img src="/images/logo.png" alt="ushuaia consulting">
                 <span class="circle"></span>
             </a>
             </div>
@@ -56,7 +56,7 @@
                     </li>
                 </ul>
                 <div class="copyrights">
-                    <p>&#xA9; 2016 knowledge Copyrights</p>
+                    <p>&#xA9; 2018 &copy; all Copyrights reserved</p>
                 </div>
             </div>
         </div>

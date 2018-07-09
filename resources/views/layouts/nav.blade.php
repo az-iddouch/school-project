@@ -31,7 +31,7 @@
                <i></i>
            </a>
            <a class="navbar-brand" href="index.html">
-               <img class="d-inline-block align-top" alt="" src="/images/basic/logo.png">
+               <img class="d-inline-block align-top" alt="" src="/images/logo.png">
            </a>
            <div class="paper_menu">
                <div id="dl-menu" class="xv-menuwrapper responsive-menu">

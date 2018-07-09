@@ -1,5 +1,11 @@
 <div class="sidebar">
-    <div class="widget search-widget">
+
+<div class="side-bar-promo">
+    <img src="{{ asset('images/side-promo.png') }}" alt="">
+</div>
+
+
+    <!-- <div class="widget search-widget">
         <form>
             <input placeholder="Search Product" type="text" class="form-control form-control-lg">
             <button type="submit" class=""><span class="icon icon-search"></span>
@@ -141,48 +147,62 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
     </div>
-    <div class="widget widget-tags">
-        <h3>Popular Tags</h3>
-        <ul class="iconList">
-            <li><a href="#">Men</a>
-            </li>
-            <li><a href="#">Women</a>
-            </li>
-            <li><a href="#">Jewelry</a>
-            </li>
-            <li><a href="#">Art Direction</a>
-            </li>
-            <li><a href="#">User Interface</a>
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
+
     <div class="widget widget-best-sellers">
-        <h3>Best Sellers</h3>
+        <h3>vous pourriez aussi aimer..</h3>
         <ul>
             <li class="shop-product">
                 <figure>
-                    <img src="./images/demo/s3.png" alt="">
+                    <img src="./images/services/4.png" alt="">
                 </figure>
-                <div class="product-info"><a href="#">FASHION NICE JACKET</a>
-                    <div class="price-tag">$40</div>
+                <div class="product-info"><a href="#">PORTE DOCUMENTS</a>
+                    <div class="price-tag">15 DHs <span style="opacity: 0">PLACE HOLDER</span></div>
                 </div>
             </li>
             <li class="shop-product">
                 <figure>
-                    <img src="./images/demo/s4.png" alt="">
+                    <img src="./images/services/5.png" alt="">
                 </figure>
-                <div class="product-info"><a href="#">FASHION NICE JACKET</a>
-                    <div class="price-tag">$40</div>
+                <div class="product-info"><a href="#">INVITATIONS </a>
+                    <div class="price-tag">5 DHs<span style="opacity: 0">PLACE HOLDER</span></div>
                 </div>
             </li>
             <li class="shop-product">
                 <figure>
-                    <img src="./images/demo/s5.png" alt="">
+                    <img src="./images/services/3.png" alt="">
                 </figure>
-                <div class="product-info"><a href="#">FASHION NICE JACKET</a>
+                <div class="product-info"><a href="#">FLAYER</a>
+                    <div class="price-tag">1.5 DHs</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="widget widget-best-sellers">
+        <h3>Best-Sellers</h3>
+        <ul>
+            <li class="shop-product">
+                <figure>
+                    <img src="./images/services/1.png" alt="">
+                </figure>
+                <div class="product-info"><a href="#">CARTE VISITE</a>
+                    <div class="price-tag">1 DH <span style="opacity: 0">PLACE HOLDER</span></div>
+                </div>
+            </li>
+            <li class="shop-product">
+                <figure>
+                    <img src="./images/services/3.png" alt="">
+                </figure>
+                <div class="product-info"><a href="#">FLAYER </a>
+                    <div class="price-tag">1.5 DHs<span style="opacity: 0">PLACE HOLDER</span></div>
+                </div>
+            </li>
+            <li class="shop-product">
+                <figure>
+                    <img src="./images/services/2.png" alt="">
+                </figure>
+                <div class="product-info"><a href="#">PAPIER EN-TETE</a>
                     <div class="price-tag">$40</div>
                 </div>
             </li>

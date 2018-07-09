@@ -19,7 +19,7 @@
 			<!--widget-best-seller-->
 		@include('layouts.sidebar')
 	</div>
-</div>
+
 <div class="col-xl-9">
 	<div class="xv-product-slides grid-view products" data-thumbnail="figure .xv-superimage"
 		data-product=".xv-product-unit">
@@ -29,7 +29,7 @@
 			<div class="xv-product-unit">
 				<div class="xv-product mb-15 mt-15 paper-block">
 					<figure>
-						<a href="#"><img class="xv-superimage" src="{{ asset('images/services/s5.png') }}" alt=""></a>
+						<a href="#"><img class="xv-superimage" src="{{ asset('images/services/'.$service->id.'.png') }}" alt=""></a>
 						<figcaption>
 							<ul class="style1">
 								<li><a data-qv-tab="#qvt-wishlist" class=" btn-square btn-blue"
@@ -71,6 +71,7 @@
 			<!--xv-product(list-view)-->
 		</div>
 	</div>
+</div>
 </div>
 </div>
 </div>
