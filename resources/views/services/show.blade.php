@@ -7,7 +7,7 @@
                 <div class="col-12 col-lg-5">
                     <div class="demo">
                         <!-- vue js slider component -->
-                        <img src="{{ asset('images/services/s5.png') }}" alt="" >
+                        <img src="{{ asset('images/services/'.$service->id.'.png') }}" alt="" >
                     </div>
                 </div>
                 <!--column-6-->

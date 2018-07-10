@@ -6,16 +6,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-7">
-                <ul class="top-nav">
-               
+                <ul class="top-nav text-left ">
+                    <li><a href="">+212 (0)5 28 32 03 74  -  +212 (0)6 10 79 54 97</a></li>
+                    <li>|&nbsp;&nbsp;</li>
+                    <li>Rue 5, N°136 Quartier El Houda - Agadir</li>
+
                 </ul>
             </div>
             <div class="col-xs-12 col-md-5">
                 <ul class="top-nav text-right">
-                    <li><a href="/cart"><i class="icon icon-exchange"></i><b>Pannier</b> <span class="badge badge-pill badge-primary">{{ count(Cart::instance('default')->content()) }}</span></a></li>
-                    <li><a href="#"><i class="icon icon-heart"></i> Wishlist</a></li>
-                    <li><a href="#"><i class="icon icon-user"></i>Login</a></li>
-                    <li><a href="#"><i class="icon icon-lock"></i>Register</a></li>
+                    <li><a href="/cart"><i class="fas fa-shopping-cart"></i> <b>Pannier</b><span class="badge badge-pill badge-primary">{{ count(Cart::instance('default')->content()) }}</span></a></li>
+                    <!-- <li><a href="#"><i class="icon icon-heart"></i> Wishlist</a></li> -->
                 </ul>
             </div>
         </div>
@@ -51,7 +52,7 @@
         <li class="parent"><a href="/services/4">Porte Documents</a>
 
         </li>
-        <li class="parent megamenu"><a href="#"><i class="fas fa-angle-down"></i>Autres</a>
+        <li class="parent megamenu" ><a href="#"><i class="fas fa-angle-down"></i>Autres</a>
             <ul class="lg-submenu">
                 <li><a><i class="icon icon-shopping-bag2 s-24"></i>Autre produits</a>
                     <ul class="lg-submenu">
@@ -84,20 +85,17 @@
         </li>
         @if(Auth::guest())
             <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin">
-                Login
+                connexion
             </a>
             </li>
             <li><a href="#modalSignUp" class="btn btn-primary nav-btn" data-toggle="modal"
-                data-target="#modalSignUp">Sign
-                Up</a>
+                data-target="#modalSignUp">enregistrer</a>
             </li>
         @elseif(Auth::check())
-          <li class="parent">
-            <a href="/cart"><i class="fas fa-shopping-cart"></i><b>Pannier<span class="badge badge-pill badge-primary">3</span></b></a>
-          </li>
-            <li>
+         
+            <li >
                 <div class="dropdown">
-                <a href="#" id="user-btn" class="font-weight-bold dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{{ Auth::user()->name }} </a>
+                <a href="#" id="user-btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{{ Auth::user()->name }} </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
