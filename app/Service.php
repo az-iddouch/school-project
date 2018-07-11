@@ -11,4 +11,9 @@ class Service extends Model
         return $this->belongsToMany(Option::class);
     
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'favorites');
+    }
 }

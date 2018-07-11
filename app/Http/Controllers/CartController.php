@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Service;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -152,27 +153,51 @@ class CartController extends Controller
      */
     public function saveForLater($id)
     {
-    
-        $item = Cart::get($id);
-        Cart::remove($id);
+        if(Auth::check()){
+            //tre to insert into database
+            \DB::beginTransaction();
+            try{
 
-        // $service = Service::find($item);
+                \DB::table('favorites')->insert(
+                    ['user_id' => Auth::id(),
+                    'service_id' => $id]
+                );
+                
+                \DB::commit();
 
-       
-        //   //calculation of addition fees , like for plastification  
-        //   dd($item);
-        //   $price = $request->price;
-        //   if(count($optionsArray) > 0){
-        //       foreach($optionsArray as $additionalFee){
-        //           $price+= $additionalFee;
-        //       }
-        //   }
+            //if the user already have that service in his favs return error
+            } catch (\Exception $e) {
 
+                \DB::rollback();
+                return redirect()->route('cart_post')->with('success_message' , 'vous avez déja ce article dans vos favoris !'); 
+            }
 
-        //add to favs table 
+            //delete element from cart
+            $rows  = Cart::content();
+            $rowId = $rows->where('id', $id)->first()->rowId;
 
+            Cart::remove($rowId);
+
+            return redirect()->route('cart_post')->with('success_message' , 'un article a été ajouté à vos favoris');  
+        }else{
+            return view('/login');
+        }   
+    }
+
+     /**
+     * remove item from favs
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function removeFromFavs($id)
+    {   
+        \DB::table('favorites')
+            ->where('service_id', '=', $id)
+            ->delete();
         
-        return redirect()->route('cart_post')->with('success_message' , 'un article a été enregistré pour plus tard.');
+            return redirect()->back();
     }
 }
     

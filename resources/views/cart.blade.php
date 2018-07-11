@@ -7,15 +7,15 @@
 
  <div class="search-section">
         <div class="container">
-            <h1>Cart</h1>
+            <h1>Panier</h1>
         </div>
     </div>
     <div class="breadcrumbs">
         <div class="container">
             <ol>
-                <li><a href="/">Home</a>
+                <li><a href="/">Acceuil</a>
                 </li>
-                <li class="active">Cart</li>
+                <li class="active">Panier</li>
             </ol>
         </div>
     </div>
@@ -72,7 +72,7 @@
                 <tr>
                     <td>
                         <figure>
-                            <img src="{{ asset('images/services/s5.png') }}" alt="">
+                            <img src="{{ asset('images/services/'.$item->id.'.png') }}" alt="">
                         </figure>
                     </td>
                     <td><a href="/services/{{$item->id}}">{{$item->name}}</a></td>
@@ -134,7 +134,7 @@
                         <form action=""></form>
                     </td>
                     <td>
-                        <form action="/cart/saveForLater/{{$item->rowId}}" method="POST">
+                        <form action="/cart/saveForLater/{{$item->id}}" method="POST">
                         @csrf
                                 <button type="submit"><i class="fas fa-heart"></i></button>
                         </form>
@@ -186,7 +186,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <input class="btn btn-success btn-block btn-lg" value="Proceed to checkout"
+                        <input class="btn btn-success btn-block btn-lg" value="Passer la commande"
                                type="submit">
                     </div>
                 </div>

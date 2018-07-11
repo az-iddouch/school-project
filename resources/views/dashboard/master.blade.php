@@ -13,7 +13,8 @@
         
     </head>
     <body>
-
+    @include('dashboard.aside')
+    @include('dashboard.header')
 
     @yield('content')
 

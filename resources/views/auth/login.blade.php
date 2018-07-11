@@ -1,69 +1,50 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="/css/app.css">
+        <title>Laravel</title>
+        <!-- Fonts -->
+        <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        
+    </head>
+    <body>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+@include('layouts.nav')
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+<main>
+    <div id="primary" class="p-t-b-100 height-full ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mx-md-auto">
+                    <div class="text-center">
+                        <img src="{{asset('images/dummy/u5.png')}}" alt="">
+                        <h2>Bienvenue de retour</h2>
+                        <p class="p-t-b-20">c'est toujours bon de t'avoir de retour</p>
+                    </div>
+                    <form action="/login" method="POST">
+						@csrf
+						<div class="form-group has-icon"><i class="fas fa-envelope"></i>
+							<input id="login_email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="e-mail" required autofocus>
+						</div>
+						<div class="form-group has-icon"><i class="fas fa-unlock-alt"></i>
+							<input id="login_password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="mote de passe" required>
+						</div>
+						<input type="submit" class="btn btn-primary btn-lg btn-block" value="Connexion">
+						<small class="forget-pass">Avez-vous oublié votre nom d'utilisateur ou mot de passe?</small>
+					</form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    <!-- #primary -->
+</main>
+
+@include('layouts.footer')

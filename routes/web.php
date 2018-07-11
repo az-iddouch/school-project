@@ -27,16 +27,19 @@ Route::delete('/cart/{service}', 'CartController@destroy');
 
 // Auth::routes();
 
+
+//dashboard Routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+Route::delete('/delete/{id}', 'CartController@removeFromFavs');
 
 
 // Authentication Routes...
-// $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->middleware('guest');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout')->middleware('auth');
 
 // Registration Routes...
-// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register')->middleware('guest');
 
 // Password Reset Routes...
@@ -45,4 +48,7 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// dashboard routes
+Route::get('/user/favorites', 'DashboardController@favorites');
 

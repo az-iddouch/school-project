@@ -24653,3 +24653,15 @@ ul.iconList li:before {
   z-index: 0;
 }
 
+.search-section {
+  padding: 30px;
+}
+
+.search-section h1 {
+  font-size: 28px;
+}
+
+.offcanvas-page {
+  height: 100%;
+}
+

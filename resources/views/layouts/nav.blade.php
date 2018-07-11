@@ -97,11 +97,11 @@
                 <div class="dropdown">
                 <a href="#" id="user-btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>{{ Auth::user()->name }} </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">do something</a>
+                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                        <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                        <!-- <a class="dropdown-item" href="#">do something</a> -->
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/logout" onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <a class="dropdown-item" href="/logout" onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
                     </div>
                 </div>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
